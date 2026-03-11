@@ -16,9 +16,9 @@ struct MediaSearchView: View {
  ProgressView("搜索中…")
  .frame(maxWidth: .infinity, maxHeight: .infinity)
  } else if let errorMessage = viewModel.errorMessage, viewModel.items.isEmpty {
- ContentUnavailableView("搜索失败", systemImage: "exclamationmark.triangle", description: Text(errorMessage))
+ UnavailableStateView(title: "搜索失败", systemImage: "exclamationmark.triangle", description: errorMessage)
  } else if viewModel.hasSearched && viewModel.items.isEmpty {
- ContentUnavailableView("未找到结果", systemImage: "magnifyingglass", description: Text("换个关键词试试"))
+ UnavailableStateView(title: "未找到结果", systemImage: "magnifyingglass", description: "换个关键词试试")
  } else {
  List(viewModel.items, id: \.stableID) { item in
  NavigationLink {

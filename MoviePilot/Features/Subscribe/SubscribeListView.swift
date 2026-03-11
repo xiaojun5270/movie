@@ -39,9 +39,9 @@ struct SubscribeListView: View {
  }
  }
  }
-
+ 
  if viewModel.items.isEmpty && !viewModel.isLoading {
- ContentUnavailableView("暂无订阅", systemImage: "bookmark.slash", description: Text("下个阶段补新增/编辑订阅能力。"))
+ UnavailableStateView(title: "暂无订阅", systemImage: "bookmark.slash", description: "下个阶段补新增/编辑订阅能力。")
  }
  }
  .navigationTitle("订阅")

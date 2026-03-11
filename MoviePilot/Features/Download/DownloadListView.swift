@@ -59,9 +59,9 @@ struct DownloadListView: View {
  }
  }
  }
-
+ 
  if viewModel.items.isEmpty && !viewModel.isLoading {
- ContentUnavailableView("暂无下载任务", systemImage: "tray", description: Text("下个阶段补新增下载和搜索能力。"))
+ UnavailableStateView(title: "暂无下载任务", systemImage: "tray", description: "下个阶段补新增下载和搜索能力。")
  }
  }
  .navigationTitle("下载")

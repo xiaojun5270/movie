@@ -20,9 +20,9 @@ struct MediaDetailView: View {
  } else if let detail = viewModel.detail {
  detailContent(detail)
  } else if let errorMessage = viewModel.errorMessage {
- ContentUnavailableView("详情加载失败", systemImage: "exclamationmark.triangle", description: Text(errorMessage))
+ UnavailableStateView(title: "详情加载失败", systemImage: "exclamationmark.triangle", description: errorMessage)
  } else {
- ContentUnavailableView("暂无详情", systemImage: "film")
+ UnavailableStateView(title: "暂无详情", systemImage: "film")
  }
  }
  .padding()
