@@ -1,5 +1,8 @@
 name: iOS Unsigned IPA
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   workflow_dispatch:
   push:
@@ -14,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install XcodeGen
         run: brew install xcodegen
@@ -29,7 +32,6 @@ jobs:
             -project MoviePilot.xcodeproj \
             -target MoviePilot \
             -configuration Release \
-            -destination 'generic/platform=iOS' \
             -showBuildSettings | tee build-settings.log
 
       - name: Build unsigned app
@@ -39,7 +41,7 @@ jobs:
             -project MoviePilot.xcodeproj \
             -target MoviePilot \
             -configuration Release \
-            -destination 'generic/platform=iOS' \
+            -sdk iphoneos \
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
@@ -55,15 +57,17 @@ jobs:
 
       - name: Upload build logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: moviepilot-build-logs
           path: |
             build-settings.log
             xcodebuild.log
+          if-no-files-found: warn
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: moviepilot-unsigned-ipa
           path: unsigned.ipa
+          if-no-files-found: error
