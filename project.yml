@@ -1,0 +1,49 @@
+name: MoviePilot
+options:
+  bundleIdPrefix: com.junge
+  minimumXcodeGenVersion: 2.38.0
+settings:
+  base:
+    SWIFT_VERSION: 5.9
+    IPHONEOS_DEPLOYMENT_TARGET: 16.0
+    TARGETED_DEVICE_FAMILY: 1,2
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+configs:
+  Debug: debug
+  Release: release
+targets:
+  MoviePilot:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: MoviePilot
+        excludes:
+          - Support/Info.plist
+    info:
+      path: MoviePilot/Support/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.junge.moviepilot
+        PRODUCT_NAME: MoviePilot
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: 0.1.0
+        GENERATE_INFOPLIST_FILE: NO
+    scheme:
+      gatherCoverageData: false
+      testTargets:
+        - MoviePilotTests
+
+  MoviePilotTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: MoviePilotTests
+    dependencies:
+      - target: MoviePilot
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.junge.moviepilotTests
+        GENERATE_INFOPLIST_FILE: YES
