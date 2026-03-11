@@ -23,7 +23,7 @@ struct DownloadListView: View {
  .foregroundStyle(.secondary)
 
  if let progress = item.progress {
- ProgressView(value: min(max(progress /100.0,0),1))
+ ProgressView(value: min(max(progress / 100.0, 0), 1))
  }
 
  HStack(spacing:12) {

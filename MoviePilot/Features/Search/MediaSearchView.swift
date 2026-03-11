@@ -61,10 +61,12 @@ struct MediaSearchView: View {
  .disabled(viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.isLoading)
  }
  }
- .onSubmit(of: .search) {
- Task { await viewModel.search() }
- }
- }
+  .onSubmit(of: .search) {
+  Task { await viewModel.search() }
+  }
+  }
+
+}
 
 }
 

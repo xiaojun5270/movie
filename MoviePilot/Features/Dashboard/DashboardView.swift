@@ -18,10 +18,10 @@ struct DashboardView: View {
  }
 
  LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing:12) {
- MetricCardView(title: "电影", value: "\(viewModel.statistic.movieCount ??0)", icon: "film", tint: .blue)
- MetricCardView(title: "剧集", value: "\(viewModel.statistic.tvCount ??0)", icon: "tv", tint: .purple)
- MetricCardView(title: "集数", value: "\(viewModel.statistic.episodeCount ??0)", icon: "list.number", tint: .orange)
- MetricCardView(title: "用户", value: "\(viewModel.statistic.userCount ??0)", icon: "person.2", tint: .green)
+ MetricCardView(title: "电影", value: "\(viewModel.statistic.movieCount ?? 0)", icon: "film", tint: .blue)
+ MetricCardView(title: "剧集", value: "\(viewModel.statistic.tvCount ?? 0)", icon: "tv", tint: .purple)
+ MetricCardView(title: "集数", value: "\(viewModel.statistic.episodeCount ?? 0)", icon: "list.number", tint: .orange)
+ MetricCardView(title: "用户", value: "\(viewModel.statistic.userCount ?? 0)", icon: "person.2", tint: .green)
  }
 
  GroupBox("存储") {
